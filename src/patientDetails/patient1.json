@@ -1,0 +1,73 @@
+{
+    "patientInfo": {
+      "name": "John Doe",
+      "age": 45,
+      "gender": "Male",
+      "patientId": "P123456",
+      "contactInfo": "+1 555-123-4567"
+    },
+    "medicalHistory": {
+      "chronicConditions": ["Hypertension", "Type 2 Diabetes"],
+      "allergies": ["Penicillin"],
+      "medications": [
+        { "name": "Metformin", "dosage": "500mg", "frequency": "Twice daily" },
+        { "name": "Lisinopril", "dosage": "10mg", "frequency": "Once daily" }
+      ]
+    },
+    "visitDetails": {
+      "dateOfVisit": "2025-01-27",
+      "physician": "Dr. Jane Smith",
+      "reasonForVisit": "Persistent chest discomfort and fatigue"
+    },
+    "examinationFindings": {
+      "vitalSigns": {
+        "bloodPressure": "150/90 mmHg",
+        "heartRate": "88 bpm",
+        "respiratoryRate": "18 breaths/min",
+        "temperature": "98.6°F"
+      },
+      "physicalExamination": [
+        "Mild pallor noted",
+        "No cyanosis or clubbing of fingers",
+        "Slightly swollen ankles"
+      ]
+    },
+    "diagnosticTests": {
+      "ECG": "Evidence of ST-segment changes indicative of ischemia",
+      "bloodTests": {
+        "HbA1c": "7.8%",
+        "fastingBloodGlucose": "145 mg/dL",
+        "cholesterolLevels": {
+          "totalCholesterol": "220 mg/dL",
+          "LDL": "140 mg/dL",
+          "HDL": "40 mg/dL"
+        }
+      },
+      "imaging": "Chest X-ray shows no abnormalities"
+    },
+    "diagnosis": {
+      "primary": "Stable Angina",
+      "secondary": ["Poorly controlled diabetes", "Hyperlipidemia"]
+    },
+    "treatmentPlan": {
+      "medications": [
+        { "name": "Aspirin", "dosage": "81mg", "frequency": "Once daily" },
+        { "name": "Atorvastatin", "dosage": "20mg", "frequency": "Once daily at bedtime" },
+        { "name": "Nitroglycerin", "dosage": "sublingual", "frequency": "as needed for chest pain" }
+      ],
+      "lifestyleRecommendations": [
+        "Adopt a heart-healthy diet (low in sodium and saturated fats)",
+        "Begin moderate physical activity for 30 minutes, 5 days a week",
+        "Monitor blood sugar levels regularly"
+      ],
+      "followUp": {
+        "reassessment": "4 weeks",
+        "repeatTests": ["Cholesterol levels", "Glucose levels"]
+      }
+    },
+    "comments": [
+      "Patient education provided on recognizing symptoms of worsening chest pain.",
+      "Encouraged adherence to medication and lifestyle modifications."
+    ]
+  }
+  
