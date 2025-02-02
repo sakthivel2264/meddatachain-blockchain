@@ -104,29 +104,37 @@ const page = () => {
     };
 
 
-  const processPatientConsents = async (patientArray, account) => {
-    if (!Array.isArray(patientArray) || patientArray.length === 0) {
-      console.error("Invalid consent array or empty array.");
-      return;
-    }
-    console.log("Account in processPatientConsents:", account);
-
-    for (let i = 0; i < patientArray.length; i++) {
-      const consentItem = patientArray[i];
-      console.log(consentItem);
-      if (consentItem.patientAddress === account) {
-        console.log("Found matching consent:", consentItem);
-        const resultStatus = await checkConsent(account, consentItem.hospitalAddress);
-        console.log("Result status:", resultStatus);
-        setStatus((prevStatus) => [
-          ...prevStatus,
-          { hospitalAddress: consentItem.hospitalAddress, status: resultStatus }, // Add the new status
-        ]);
-        console.log(`Status ${consentItem.hospitalAddress}:`,resultStatus)
-        return;
+    const processPatientConsents = async (patientArray, account) => {
+      if (!Array.isArray(patientArray) || patientArray.length === 0) {
+          console.error("Invalid consent array or empty array.");
+          return;
       }
-    }
+  
+      console.log("Account in processPatientConsents:", account);
+      
+      // Collect all statuses before updating state
+      const statusUpdates = [];
+  
+      for (let i = 0; i < patientArray.length; i++) {
+          const consentItem = patientArray[i];
+          console.log(consentItem);
+  
+          if (consentItem.patientAddress === account) {
+              console.log("Found matching consent:", consentItem);
+              
+              const resultStatus = await checkConsent(account, consentItem.hospitalAddress);
+              console.log(`Status ${consentItem.hospitalAddress}:`, resultStatus);
+              
+              statusUpdates.push({ hospitalAddress: consentItem.hospitalAddress, status: resultStatus });
+          }
+      }
+  
+      // Update the state once with all statuses
+      if (statusUpdates.length > 0) {
+          setStatus((prevStatus) => [...prevStatus, ...statusUpdates]);
+      }
   };
+  
 
   const handleGrantConsent = async (hospitalAddress) => {
     console.log("Granting consent to hospital:", hospitalAddress);

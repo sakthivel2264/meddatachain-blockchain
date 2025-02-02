@@ -35,4 +35,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+transaction hash = 0x3f9958050c808c7d3bc2d465c761d0ea8d61629e3b750548dbb4dc70f0fc12e7
+
+contract = 0x54D3bc53f58bB3116976ff8E1D8cEE6d3C8c4914
 truffle migrate
