@@ -85,11 +85,11 @@ export const registerHospital = async (name, addresskey, location) => {
  * @param {string} addresskey - The address of the patient.
  * @param {string} hospitalAddress
  */
-export const registerPatient = async (name, addresskey, hospitalAddress) => {
+export const registerPatient = async (name, addresskey, hospitalAddress, dob, gender, bloodGroup, govId, phone, email) => {
   if (!contract || !account) throw new Error("Contract or account not initialized");
 
   try {
-    await contract.methods.registerPatient(name, addresskey, hospitalAddress).send({ from: account });
+    await contract.methods.registerPatient(name, addresskey, hospitalAddress, dob, gender, bloodGroup, govId, phone, email).send({ from: account });
     alert("Patient registered successfully!");
   } catch (error) {
     console.error("Registration error:", error);

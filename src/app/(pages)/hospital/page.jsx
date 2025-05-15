@@ -140,7 +140,7 @@ function RecordSharing({ selectedItem }) {
   const [message, setMessage] = useState("")
   const [account, setAccount] = useState("")
   const [selectedPatient, setSelectedPatient] = useState("")
-  const [newPatient, setNewPatient] = useState({ name: "", addresskey: "" })
+  const [newPatient, setNewPatient] = useState({ name: "", addresskey: "", dob: "", gender: "", bloodGroup: "",  govId: "", phone: "", email: ""  })
   const [PatientData, setPatientData] = useState({ addresskey: "", encryptedData: "", encryptionKey: "" })
   const [diagnosisData, setDiagnosisData] = useState("")
   const [ encryptedData, setEncryptedData] = useState("")
@@ -248,9 +248,9 @@ function RecordSharing({ selectedItem }) {
 
   const addPatient = async (e) => {
     e.preventDefault()
-    const { name, addresskey } = newPatient
-    if (name && addresskey) {
-      const added = await registerPatient(name, addresskey, account)
+    const { name, addresskey, dob, gender, bloodGroup, govId, phone, email } = newPatient
+    if (name && addresskey && dob && gender && email && phone) {
+      const added = await registerPatient(name, addresskey, account, dob, gender, bloodGroup, govId, phone, email)
     }
   }
 
@@ -327,6 +327,67 @@ function RecordSharing({ selectedItem }) {
                 required
               />
             </div>
+            <div>
+            <Label htmlFor="dob">Date of Birth</Label>
+            <Input
+              id="dob"
+              type="date"
+              value={newPatient.dob}
+              onChange={(e) => setNewPatient({ ...newPatient, dob: e.target.value })}
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="gender">Gender</Label>
+            <Input
+              id="gender"
+              value={newPatient.gender}
+              onChange={(e) => setNewPatient({ ...newPatient, gender: e.target.value })}
+              placeholder="Enter gender"
+              required
+            />
+          </div>
+          <div>
+          <Label htmlFor="bloodGroup">Blood Group</Label>
+          <Input
+            id="bloodGroup"
+            value={newPatient.bloodGroup}
+            onChange={(e) => setNewPatient({ ...newPatient, bloodGroup: e.target.value })}
+            placeholder="Enter blood group"
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="govId">Government-issued ID</Label>
+          <Input
+            id="govId"
+            value={newPatient.govId}
+            onChange={(e) => setNewPatient({ ...newPatient, govId: e.target.value })}
+            placeholder="e.g., Aadhaar, SSN"
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="phone">Phone Number</Label>
+          <Input
+            id="phone"
+            value={newPatient.phone}
+            onChange={(e) => setNewPatient({ ...newPatient, phone: e.target.value })}
+            placeholder="Enter phone number"
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="email">Email Address</Label>
+          <Input
+            id="email"
+            type="email"
+            value={newPatient.email}
+            onChange={(e) => setNewPatient({ ...newPatient, email: e.target.value })}
+            placeholder="Enter email address"
+            required
+          />
+        </div>
           </form>
         </CardContent>
         <CardFooter>
@@ -623,6 +684,12 @@ function RecordSharing({ selectedItem }) {
                     <TableHead>ID</TableHead>
                     <TableHead>Name</TableHead>
                     <TableHead>AddressKey</TableHead>
+                    <TableHead>DOB</TableHead>
+                    <TableHead>Gender</TableHead>
+                    <TableHead>BloodGroup</TableHead>
+                    <TableHead>Gov ID</TableHead>
+                    <TableHead>Phone</TableHead>
+                    <TableHead>Email</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -632,6 +699,12 @@ function RecordSharing({ selectedItem }) {
                         <TableCell>{index+1}</TableCell>
                         <TableCell>{patient.name}</TableCell>
                         <TableCell>{patient.patientAddress}</TableCell>
+                        <TableCell>{patient.dob}</TableCell>
+                        <TableCell>{patient.gender}</TableCell>
+                        <TableCell>{patient.bloodGroup}</TableCell>
+                        <TableCell>{patient.govId}</TableCell>
+                        <TableCell>{patient.phone}</TableCell>
+                        <TableCell>{patient.email}</TableCell>
                       </TableRow>
                     ))
                   ) : (

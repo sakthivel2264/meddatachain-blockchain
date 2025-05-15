@@ -49,6 +49,12 @@ contract MedicalDataTransfer is AccessControl {
         string name;
         address patientAddress;
         address hospitalAddress;
+        string dob;
+        string gender;
+        string bloodGroup;
+        string govId;
+        string phone;
+        string email;
     }
 
     struct Record {
@@ -84,7 +90,12 @@ contract MedicalDataTransfer is AccessControl {
     }
 
     //working
-    function registerPatient(string memory name, address addresskey, address hospitalAddress) public {
+    function registerPatient(string memory name, address addresskey, address hospitalAddress,string memory dob,
+    string memory gender,
+    string memory bloodGroup,
+    string memory govId,
+    string memory phone,
+    string memory email ) public {
         _patientCounter.increment();
         uint256 patientId = _patientCounter.current();
         
@@ -92,7 +103,13 @@ contract MedicalDataTransfer is AccessControl {
             patientId,
             name,
             addresskey,
-            hospitalAddress
+            hospitalAddress,
+            dob,
+            gender,
+            bloodGroup,
+            govId,
+            phone,
+            email
         );
         
         patients[addresskey].push(newPatient);
